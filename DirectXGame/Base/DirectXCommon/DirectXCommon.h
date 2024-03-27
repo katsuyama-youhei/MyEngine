@@ -1,6 +1,6 @@
 #pragma once
-#include "WinApp.h"
-#include "DebugLog.h"
+#include "DirectXGame/Base/WinApp/WinApp.h"
+#include "DirectXGame/Base/DebugSytem/DebugLog.h"
 #include "Externals/DirectXTex/d3dx12.h"
 #include <wrl/client.h>
 #include <format>

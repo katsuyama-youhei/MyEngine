@@ -53,6 +53,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -77,6 +78,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -92,8 +94,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DebugLog.cpp" />
-    <ClCompile Include="DirectXCommon.cpp" />
+    <ClCompile Include="DirectXGame\Base\DebugSytem\DebugLog.cpp" />
+    <ClCompile Include="DirectXGame\Base\DirectXCommon\DirectXCommon.cpp" />
     <ClCompile Include="Externals\imgui\imgui.cpp" />
     <ClCompile Include="Externals\imgui\imgui_demo.cpp" />
     <ClCompile Include="Externals\imgui\imgui_draw.cpp" />
@@ -102,14 +104,14 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Externals\imgui\imgui_tables.cpp" />
     <ClCompile Include="Externals\imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Math\Math.cpp" />
-    <ClCompile Include="Math\Vector2.cpp" />
-    <ClCompile Include="Math\Vector3.cpp" />
-    <ClCompile Include="WinApp.cpp" />
+    <ClCompile Include="DirectXGame\Math\Math.cpp" />
+    <ClCompile Include="DirectXGame\Math\Vector2.cpp" />
+    <ClCompile Include="DirectXGame\Math\Vector3.cpp" />
+    <ClCompile Include="DirectXGame\Base\WinApp\WinApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DebugLog.h" />
-    <ClInclude Include="DirectXCommon.h" />
+    <ClInclude Include="DirectXGame\Base\DebugSytem\DebugLog.h" />
+    <ClInclude Include="DirectXGame\Base\DirectXCommon\DirectXCommon.h" />
     <ClInclude Include="Externals\imgui\imconfig.h" />
     <ClInclude Include="Externals\imgui\imgui.h" />
     <ClInclude Include="Externals\imgui\imgui_impl_dx12.h" />
@@ -118,13 +120,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Externals\imgui\imstb_rectpack.h" />
     <ClInclude Include="Externals\imgui\imstb_textedit.h" />
     <ClInclude Include="Externals\imgui\imstb_truetype.h" />
-    <ClInclude Include="Math\AABB.h" />
-    <ClInclude Include="Math\Math.h" />
-    <ClInclude Include="Math\Matrix4x4.h" />
-    <ClInclude Include="Math\Vector2.h" />
-    <ClInclude Include="Math\Vector3.h" />
-    <ClInclude Include="Math\Vector4.h" />
-    <ClInclude Include="WinApp.h" />
+    <ClInclude Include="DirectXGame\Math\AABB.h" />
+    <ClInclude Include="DirectXGame\Math\Math.h" />
+    <ClInclude Include="DirectXGame\Math\Matrix4x4.h" />
+    <ClInclude Include="DirectXGame\Math\Vector2.h" />
+    <ClInclude Include="DirectXGame\Math\Vector3.h" />
+    <ClInclude Include="DirectXGame\Math\Vector4.h" />
+    <ClInclude Include="DirectXGame\Base\WinApp\WinApp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Object3d.hlsli" />
