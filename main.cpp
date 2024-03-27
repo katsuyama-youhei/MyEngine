@@ -225,7 +225,7 @@ ModelData LoadObjFile(const std::string& directoryPath, const std::string& filen
 			Vector4 position;
 			s >> position.x >> position.y >> position.z;
 			position.w = 1.0f;
-			//position.x *= -1.0f;
+			position.x *= -1.0f;
 			position.z *= -1.0f;
 			positions.push_back(position);
 		}
@@ -238,7 +238,7 @@ ModelData LoadObjFile(const std::string& directoryPath, const std::string& filen
 		else if (identifier == "vn") {
 			Vector3 normal;
 			s >> normal.x >> normal.y >> normal.z;
-			//normal.x *= -1.0f;
+			normal.x *= -1.0f;
 			normal.z *= -1.0f;
 			normals.push_back(normal);
 		}
