@@ -877,9 +877,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	pixelShaderBlob->Release();
 	vertexShaderBlob->Release();
 
+	CloseWindow(winApp->GetHWND());
+
 	winApp->DiscardingWindow();
 
-	CloseWindow(winApp->GetHWND());
+	
 
 	// ゲーム終了時にCOMの終了処理
 	//CoUninitialize();
