@@ -119,6 +119,9 @@
     <ClInclude Include="DirectXGame\Math\Vector4.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
+    <ClInclude Include="ReleseCheck.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Object3d.hlsli" />

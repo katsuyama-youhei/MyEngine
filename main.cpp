@@ -8,6 +8,7 @@
 #include "DirectXGame/Math/Vector2.h"
 #include "DirectXGame/Math/Vector3.h"
 #include "DirectXGame/Math/Vector4.h"
+#include "ReleseCheck.h"
 #include <d3d12.h>
 #include <dxgi1_6.h>
 #include <dxgidebug.h>
@@ -66,21 +67,6 @@ struct ModelData {
 	std::vector<VertexData> vertices;
 	MaterialData material;
 };
-
-struct D3DResourceLeakChecker
-{
-	~D3DResourceLeakChecker() {
-		// リソースリークチェック
-		Microsoft::WRL::ComPtr<IDXGIDebug1> debug;
-		if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(&debug)))) {
-			debug->ReportLiveObjects(DXGI_DEBUG_ALL, DXGI_DEBUG_RLO_ALL);
-			debug->ReportLiveObjects(DXGI_DEBUG_APP, DXGI_DEBUG_RLO_ALL);
-			debug->ReportLiveObjects(DXGI_DEBUG_D3D12, DXGI_DEBUG_RLO_ALL);
-		}
-	}
-
-};
-
 
 //Resource作成関数
 Microsoft::WRL::ComPtr<ID3D12Resource> CreateBufferResource(Microsoft::WRL::ComPtr<ID3D12Device> device, size_t sizeInBytes) {
@@ -300,6 +286,8 @@ ModelData LoadObjFile(const std::string& directoryPath, const std::string& filen
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
+	static D3DResourceLeakChecker leakChecker{};
+
 	WinApp* winApp = nullptr;
 	DirectXCommon* dxCommon = nullptr;
 
@@ -308,7 +296,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	dxCommon = DirectXCommon::GetInstance();
 	dxCommon->Initialize();
 
-	D3DResourceLeakChecker leakChecker;
+	
 
 	HRESULT hr;
 
@@ -891,7 +879,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	winApp->DiscardingWindow();
 
-	//CloseWindow(winApp->GetHWND());
+	CloseWindow(winApp->GetHWND());
 
 	// ゲーム終了時にCOMの終了処理
 	//CoUninitialize();
